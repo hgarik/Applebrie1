@@ -26,8 +26,7 @@ namespace WebApi.Controllers
         [Route("GetList")]
         public async Task<ActionResult<List<User>>> GetUsers(FilterObj obj)
         {
-                var a = await _repository.GetUsers(obj);
-                return a;
+            return await _repository.GetUsers(obj);
         }
 
         [HttpPost]
@@ -40,14 +39,14 @@ namespace WebApi.Controllers
             });
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("EditUser")]
         public async Task<ActionResult<User>> EditUser(User user)
         {
             return await _repository.Update(user);
         }
 
-        [HttpPost]
+        [HttpDelete]
         [Route("DeleteUser/{UserId}")]
         public async Task<ActionResult<User>> DeleteUser(int userId)
         {
